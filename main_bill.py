@@ -29,18 +29,18 @@ def main(dest_path):
         for i in dates:
             workbook = load_workbook(filename=dest_path+i+" Pharmacy.xlsx", data_only=True)
             sheet = workbook.active
-            f=False
+            # f=False
             for j in range(1, 7):
                 sheet = workbook["Sheet"+str(j)]
                 for i in range(14,39):
                     s=str(i)
-                    if(sheet["B"+s].value is None):
-                        f=True
-                        break
-                    else:
+                    # if(sheet["B"+s].value is None):
+                    #     f=True
+                    #     break
+                    if(sheet["B"+s].value is not None):
                         sum+=(float(sheet["F"+s].value)*float(sheet["G"+s].value))
-                if(f):
-                    break      
+                # if(f):
+                #     break      
         return sum
 
     f=open(dest_path+"patient_details.txt", 'r')

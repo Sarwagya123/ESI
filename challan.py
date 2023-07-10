@@ -59,23 +59,23 @@ def main(dest_path):
         workbook2 = load_workbook(filename=dest_path+k+" Challan.xlsx")
         sheet1 = workbook1.active
         sheet2 = workbook2.active
-        f=False
+        # f=False
         for j in range(1, 7):
             sheet1 = workbook1["Sheet"+str(j)]
             sheet2 = workbook2["Sheet"+str(j)]
             for i in range(14,39):
                 s=str(i)
-                if(sheet1["B"+s].value is None):
-                    f=True
-                    break
-                else:
+                # if(sheet1["B"+s].value is None):
+                #     f=True
+                #     break
+                if(sheet1["B"+s].value is not None):
                     sheet2["C"+str(i-1)]=sheet1["B"+s].value
                     sheet2["D"+str(i-1)]=sheet1["C"+s].value
                     sheet2["E"+str(i-1)]=sheet1["D"+s].value
                     sheet2["F"+str(i-1)]=sheet1["E"+s].value
                     sheet2["G"+str(i-1)]=sheet1["F"+s].value
                     sheet2["H"+str(i-1)]=sheet1["G"+s].value
-            if(f):
-                break
+            # if(f):
+            #     break
         
         workbook2.save(filename=dest_path+k+" Challan.xlsx")
