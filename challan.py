@@ -45,6 +45,13 @@ def main(dest_path):
         print(i)
         shutil.copy(src_path, dest_path+"Challan.xlsx")
         new_name=dates[i]+" Challan.xlsx"
+        if(os.path.isfile(dest_path+new_name)):
+            for i in range(0, nod):
+                print("inside",i)
+                check_name=dates[i]+" Challan.xlsx"
+                path=dest_path+check_name
+                if(os.path.isfile(path)):
+                    os.remove(path)
         os.rename(dest_path+"Challan.xlsx", dest_path+new_name)
         workbook = load_workbook(filename=dest_path+new_name)
         sheet = workbook.active

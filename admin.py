@@ -184,6 +184,8 @@ def main(n):
             l=os.listdir(dir+year+"/"+month+"/")
             patient_details=[]
             for i in l:
+                if(i==month+" Month File.xlsx"):
+                    continue
                 path=dest_path+i+"/"
                 f=open(path+"patient_details.txt",'r')
                 lf=f.readlines()
@@ -199,6 +201,8 @@ def main(n):
 
                 patient_details.append([lf[0], lf[7], lf[5], lf[6], sum, sheet["D18"].value ])
 
+            if(os.path.isfile(dest_path+month+" Month File.xlsx")):
+                os.remove(dest_path+month+" Month File.xlsx")
             shutil.copy(src_path, dest_path+"Month Files.xlsx")
             new_name=month+" Month File.xlsx"
             os.rename(dest_path+"Month Files.xlsx", dest_path+new_name)
