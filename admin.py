@@ -199,7 +199,7 @@ def main(n):
                     else:
                         sum += float(sheet["F"+str(j)].value)*float(sheet["G"+str(j)].value)
 
-                patient_details.append([lf[0], lf[7], lf[5], lf[6], sum, sheet["D18"].value ])
+                patient_details.append([lf[0], lf[7], lf[5], lf[6], sum, sheet["D18"].value, sheet["D15"].value ])
 
             if(os.path.isfile(dest_path+month+" Month File.xlsx")):
                 os.remove(dest_path+month+" Month File.xlsx")
@@ -222,6 +222,7 @@ def main(n):
                 sheet["H"+s]=patient_details[j][4]
                 total+=patient_details[j][4]
                 sheet["J"+s]=patient_details[j][5]
+                sheet["E"+s]=patient_details[j][6]
             # for i in range(11,27):
             #     s=str(i)
 
