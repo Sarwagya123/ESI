@@ -1,0 +1,2 @@
+/res/extras.txt
+/res/login.txt
