@@ -52,8 +52,19 @@ def main(parent_dir):
                         messagebox.showinfo("Add Patient","Duplicate Patient!")
                         print("Duplicate Patient")
                         T2.delete(1.0, "end-1c")
+                        T5.delete(1.0, "end-1c")
                         f=False
                         # f.close()
+                    else:
+                        for i in l2:
+                            l3=i.split("-")
+                            if(indoor in l3):
+                                messagebox.showinfo("Add Patient","Duplicate Indoor Reg No!")
+                                print("Duplicate Indoor Reg No")
+                                T5.delete(1.0, "end-1c")
+                                f=False
+                                break
+                        
                 else:
                     os.mkdir(parent_dir+year+"/"+month)
                     l2=os.listdir(parent_dir+year+"/"+month+"/")
@@ -100,6 +111,17 @@ def main(parent_dir):
                 if(age=="" or relation=="" or gender=="" or dod=="" or insurance==""):
                     messagebox.showinfo("Add Patient","Empty Field")
                     print("Empty Field!")
+                
+                elif(not(age.isnumeric())):
+                    messagebox.showinfo("Add Patient","Age should be numeric")
+                    T3.delete(1.0, "end-1c")
+                    print("Non-numeric Age")
+                
+                elif(not(gender.lower() == "m" or gender.lower() == "f" or gender.lower() == "male" or gender.lower() == "female")):
+                    messagebox.showinfo("Add Patient","Please enter the correct gender")
+                    T6.delete(1.0, "end-1c")
+                    print("Correct the gender")
+                
                 
                 #writing the patient details in a text file inside the directory
                 else:
