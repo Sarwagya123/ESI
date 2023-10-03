@@ -43,16 +43,16 @@ window = Tk()
 # declaring the common font size for all the buttons
 myFont = font.Font(family="Times New Roman",size=15)
 
-lbl1 = Label(window, text="ESI - SHRC", fg='red', bg='turquoise', font=("Times New Roman", 30))
+lbl1 = Label(window, text="ESI - SHRC", fg='yellow', bg='blue', font=("Times New Roman", 30))
 lbl1.place(x=130, y=30)
 
-lbl2 = Label(window, text="Log-In ID", fg='black', bg='turquoise', font=("Times New Roman", 20))
+lbl2 = Label(window, text="Log-In ID", fg='white', bg='blue', font=("Times New Roman", 20))
 lbl2.place(x=30, y=100)
 
 T1 = Text(window, bg='white', fg='black', height=1.4, width=25, padx=1, pady=1)
 T1.place(x=170,y=108)
 
-lbl3 = Label(window, text="Password", fg='black', bg='turquoise', font=("Times New Roman", 20))
+lbl3 = Label(window, text="Password", fg='white', bg='blue', font=("Times New Roman", 20))
 lbl3.place(x=30, y=150)
 
 T2 = Text(window, bg='white', fg='black', height=1.4, width=25, padx=1, pady=1)
@@ -69,5 +69,5 @@ btn2.place(x=150, y=250)
 
 window.title('ESI')
 window.geometry("450x300")
-window.configure(bg='turquoise')
+window.configure(bg='blue')
 window.mainloop()

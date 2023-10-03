@@ -61,7 +61,7 @@ def main(dest_path):
     #Edit Patient GUI
     window = Tk()
 
-    lbl = Label(window, text="Edit Patient", fg='red', bg='turquoise', font=("Times New Roman", 30))
+    lbl = Label(window, text="Edit Patient", fg='yellow', bg='blue', font=("Times New Roman", 30))
     lbl.place(x=55, y=20)
 
     # declaring the common font size for all the buttons
@@ -89,5 +89,5 @@ def main(dest_path):
 
     window.title('Edit Patient')
     window.geometry("300x450")
-    window.configure(bg='turquoise')
+    window.configure(bg='blue')
     window.mainloop()

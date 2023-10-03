@@ -159,46 +159,46 @@ def main(dates, dest_path):
     #GUI for adding medicine in the patients pharmacy bill
     window = Tk()
 
-    lbl = Label(window, text="Add Medicines", fg='red', bg='turquoise', font=("Times New Roman", 28))
+    lbl = Label(window, text="Add Medicines", fg='yellow', bg='blue', font=("Times New Roman", 28))
     lbl.place(x=135, y=15)
 
-    lbl = Label(window, text="Name", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Name", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=80)
 
     T2 = AutocompleteCombobox(window, width=30, completevalues=med_name)
     T2.place(x=95,y=88)
 
-    lbl = Label(window, text="ID", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="ID", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=340, y=80)
 
     T1 = Text(window, bg='white', fg='black', height=1.4, width=10, padx=1, pady=1)
     T1.place(x=375,y=88)
 
-    lbl = Label(window, text="Manufacturer", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Manufacturer", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=130)
 
     T4 = Text(window, bg='white', fg='black', height=1.4, width=22, padx=1, pady=1)
     T4.place(x=180,y=138)
 
-    lbl = Label(window, text="Qty", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Qty", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=355, y=130)
 
     T3 = Text(window, bg='white', fg='black', height=1.4, width=10, padx=1, pady=1)
     T3.place(x=405,y=138)
 
-    lbl = Label(window, text="Batch", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Batch", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=183)
 
     T5 = Text(window, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
     T5.place(x=95,y=190)
 
-    lbl = Label(window, text="Expiry", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Expiry", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=240, y=183)
 
     T6 = Text(window, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
     T6.place(x=320,y=190)
 
-    lbl = Label(window, text="MRP", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="MRP", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=235)
 
     T7 = Text(window, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
@@ -232,5 +232,5 @@ def main(dates, dest_path):
 
     window.title('Add Medicines')
     window.geometry("500x360")
-    window.configure(bg='turquoise')
+    window.configure(bg='blue')
     window.mainloop()

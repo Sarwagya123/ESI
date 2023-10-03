@@ -130,52 +130,52 @@ def main(parent_dir):
     myFont = font.Font(size=15)
 
 
-    lbl = Label(window, text="Enter Patient Details", fg='red', bg='turquoise', font=("Times New Roman", 28))
+    lbl = Label(window, text="Enter Patient Details", fg='yellow', bg='blue', font=("Times New Roman", 28))
     lbl.place(x=110, y=10)
 
-    lbl = Label(window, text="Name", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Name", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=80)
 
     T2 = Text(window, bg='white', fg='black', height=1.4, width=30, padx=1, pady=1)
     T2.place(x=95,y=88)
 
-    lbl = Label(window, text="Age", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Age", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=350, y=80)
 
     T3 = Text(window, bg='white', fg='black', height=1.4, width=10, padx=1, pady=1)
     T3.place(x=405,y=88)
 
-    lbl = Label(window, text="Relation", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Relation", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=130)
 
     T4 = Text(window, bg='white', fg='black', height=1.4, width=45, padx=1, pady=1)
     T4.place(x=125,y=138)
 
-    lbl = Label(window, text="Indoor Reg. No.", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Indoor Reg. No.", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=183)
 
     T5 = Text(window, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
     T5.place(x=200,y=190)
 
-    lbl = Label(window, text="Gender", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Gender", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=330, y=183)
 
     T6 = Text(window, bg='white', fg='black', height=1.4, width=7, padx=1, pady=1)
     T6.place(x=420,y=190)
 
-    lbl = Label(window, text="DOA", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="DOA", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=233)
 
     T7 = Text(window, bg='white', fg='black', height=1.4, width=18, padx=1, pady=1)
     T7.place(x=87,y=240)
 
-    lbl = Label(window, text="DOD", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="DOD", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=250, y=233)
 
     T8 = Text(window, bg='white', fg='black', height=1.4, width=18, padx=1, pady=1)
     T8.place(x=320,y=240)
 
-    lbl = Label(window, text="Insurance No.", fg='red', bg='turquoise', font=("Times New Roman", 20))
+    lbl = Label(window, text="Insurance No.", fg='white', bg='blue', font=("Times New Roman", 20))
     lbl.place(x=20, y=283)
 
     T9 = Text(window, bg='white', fg='black', height=1.4, width=25, padx=1, pady=1)
@@ -189,5 +189,5 @@ def main(parent_dir):
 
     window.title('Add Patient')
     window.geometry("500x400")
-    window.configure(bg='turquoise')
+    window.configure(bg='blue')
     window.mainloop()

@@ -275,7 +275,7 @@ def main(n):
 
                 window1.title('Generate Month Files')
                 window1.geometry("250x200")
-                window1.configure(bg='turquoise')
+                window1.configure(bg='blue')
                 window1.mainloop()
                 print("Generate month files")
 
@@ -285,34 +285,34 @@ def main(n):
 
         #GUI for updating inventory
         window1 =Tk()
-        lbl = Label(window1, text="Update Inventory", fg='red', bg='turquoise', font=("Times New Roman", 28))
+        lbl = Label(window1, text="Update Inventory", fg='yellow', bg='blue', font=("Times New Roman", 28))
         lbl.place(x=135, y=15)
 
-        lbl = Label(window1, text="Name", fg='red', bg='turquoise', font=("Times New Roman", 20))
+        lbl = Label(window1, text="Name", fg='white', bg='blue', font=("Times New Roman", 20))
         lbl.place(x=20, y=80)
 
         T2 = Text(window1, bg='white', fg='black', height=1.4, width=20, padx=1, pady=1)
         T2.place(x=95,y=88)
 
-        lbl = Label(window1, text="MRP", fg='red', bg='turquoise', font=("Times New Roman", 20))
+        lbl = Label(window1, text="MRP", fg='white', bg='blue', font=("Times New Roman", 20))
         lbl.place(x=315, y=80)
 
         T1 = Text(window1, bg='white', fg='black', height=1.4, width=10, padx=1, pady=1)
         T1.place(x=388,y=88)
 
-        lbl = Label(window1, text="Manufacturer", fg='red', bg='turquoise', font=("Times New Roman", 20))
+        lbl = Label(window1, text="Manufacturer", fg='white', bg='blue', font=("Times New Roman", 20))
         lbl.place(x=20, y=130)
 
         T4 = Text(window1, bg='white', fg='black', height=1.4, width=30, padx=1, pady=1)
         T4.place(x=180,y=138)
 
-        lbl = Label(window1, text="Batch", fg='red', bg='turquoise', font=("Times New Roman", 20))
+        lbl = Label(window1, text="Batch", fg='white', bg='blue', font=("Times New Roman", 20))
         lbl.place(x=20, y=183)
 
         T5 = Text(window1, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
         T5.place(x=95,y=190)
 
-        lbl = Label(window1, text="Expiry", fg='red', bg='turquoise', font=("Times New Roman", 20))
+        lbl = Label(window1, text="Expiry", fg='white', bg='blue', font=("Times New Roman", 20))
         lbl.place(x=240, y=183)
 
         T6 = Text(window1, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
@@ -328,7 +328,7 @@ def main(n):
 
         window1.title('Update Inventory')
         window1.geometry("500x350")
-        window1.configure(bg='turquoise')
+        window1.configure(bg='blue')
         window1.mainloop()
 
     #function to edit the patient details
@@ -351,13 +351,13 @@ def main(n):
 
                 window1 = Tk()
 
-                lbl = Label(window1, text="Name", fg='red', bg='turquoise', font=("Times New Roman", 20))
+                lbl = Label(window1, text="Name", fg='white', bg='blue', font=("Times New Roman", 20))
                 lbl.place(x=20, y=30)
 
                 T2 = Text(window1, bg='white', fg='black', height=1.4, width=30, padx=1, pady=1)
                 T2.place(x=95,y=38)
 
-                lbl = Label(window1, text="Indoor Reg. No.", fg='red', bg='turquoise', font=("Times New Roman", 20))
+                lbl = Label(window1, text="Indoor Reg. No.", fg='white', bg='blue', font=("Times New Roman", 20))
                 lbl.place(x=20, y=83)
 
                 T5 = Text(window1, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
@@ -389,7 +389,7 @@ def main(n):
 
                 window1.title('Edit Patient')
                 window1.geometry("350x250")
-                window1.configure(bg='turquoise')
+                window1.configure(bg='blue')
                 window1.mainloop()
                 print("edit patients")
 
@@ -414,13 +414,13 @@ def main(n):
 
                 window1 = Tk()
 
-                lbl = Label(window1, text="Name", fg='red', bg='turquoise', font=("Times New Roman", 20))
+                lbl = Label(window1, text="Name", fg='white', bg='blue', font=("Times New Roman", 20))
                 lbl.place(x=20, y=30)
 
                 T2 = Text(window1, bg='white', fg='black', height=1.4, width=30, padx=1, pady=1)
                 T2.place(x=95,y=38)
 
-                lbl = Label(window1, text="Indoor Reg. No.", fg='red', bg='turquoise', font=("Times New Roman", 20))
+                lbl = Label(window1, text="Indoor Reg. No.", fg='white', bg='blue', font=("Times New Roman", 20))
                 lbl.place(x=20, y=83)
 
                 T5 = Text(window1, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
@@ -452,7 +452,7 @@ def main(n):
 
                 window1.title('See Patient')
                 window1.geometry("350x250")
-                window1.configure(bg='turquoise')
+                window1.configure(bg='blue')
                 window1.mainloop()
                 print("see patients")
 
@@ -460,7 +460,7 @@ def main(n):
     #Admin GUI
     window = Tk()
 
-    lbl = Label(window, text="Welcome User", fg='red', bg='turquoise', font=("Times New Roman", 30))
+    lbl = Label(window, text="Welcome User", fg='yellow', bg='blue', font=("Times New Roman", 30))
     lbl.place(x=35, y=20)
 
     # declaring the common font size for all the buttons
@@ -493,5 +493,5 @@ def main(n):
 
     window.title('Admin')
     window.geometry("300x550")
-    window.configure(bg='turquoise')
+    window.configure(bg='blue')
     window.mainloop()
