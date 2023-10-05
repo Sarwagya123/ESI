@@ -117,7 +117,7 @@ def main(parent_dir):
                     T3.delete(1.0, "end-1c")
                     print("Non-numeric Age")
                 
-                elif(not(gender.lower() == "m" or gender.lower() == "f" or gender.lower() == "male" or gender.lower() == "female")):
+                elif(not(gender.lower() == "m" or gender.lower() == "f" or gender.lower() == "male" or gender.lower() == "female" or gender.lower() == "others")):
                     messagebox.showinfo("Add Patient","Please enter the correct gender")
                     T6.delete(1.0, "end-1c")
                     print("Correct the gender")

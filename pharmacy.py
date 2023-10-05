@@ -3,6 +3,8 @@ import tkinter.font as font
 from tkinter import messagebox
 from openpyxl import load_workbook
 from ttkwidgets.autocomplete import *
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 import re
 
 
@@ -62,55 +64,90 @@ def main(dates, dest_path):
         exp = T6.get("1.0", "end-1c")
         mrp = T7.get("1.0", "end-1c")
         date = menu.get()
+        date_exp=datetime.strptime(exp, '%d-%m-%Y')
+        now = datetime.strptime(dates[len(dates)-1], '%d-%m-%Y')+ relativedelta(months = 1)
         if(id=="" or name=="" or qty=="" or manu=="" or batch=="" or exp=="" or mrp=="" or date=="Select Date"):
-                messagebox.showinfo("Add Medicine","Empty Field")
-                print("Empty Field!")
+            messagebox.showinfo("Add Medicine","Empty Field")
+            print("Empty Field!")
         elif(not(re.search("^[0-9]{2}-[0-9]{2}-[0-9]{4}$",exp))):
-                messagebox.showinfo("Add Medicine","Add Date in DD-MM-YYYY Format")
-                print("Date Format")
-
+            messagebox.showinfo("Add Medicine","Add Date in DD-MM-YYYY Format")
+            print("Date Format")
+        elif(date_exp<=now):
+            messagebox.showinfo("Add Medicine","Please change the expiry date!")
+            T6.delete(1.0, "end-1c")
+            print("Expiry Date")
         else:
             workbook = load_workbook(filename="res/Inventory.xlsx")
             sheet=workbook.active
             rows = get_maximum_rows(sheet_object=sheet)
+            f_name=False
             for i in range(2, rows+1):
                 if(sheet["A"+str(i)].value==name):
-                    sheet["A"+str(i)]=name
-                    sheet["B"+str(i)]=batch
-                    sheet["C"+str(i)]=manu
-                    sheet["D"+str(i)]=exp
-                    sheet["E"+str(i)]=mrp   
+                    f_name=True
+                    f_ok=False
+                    if(not(str(sheet["D"+str(i)].value)==exp) and str(sheet["B"+str(i)].value)==batch):
+                        messagebox.showinfo("Add Medicine","Please change the batch as well")
+                        messagebox.showinfo("Add Medicine","Please check the MRP as well")
+                        T5.delete(1.0, "end-1c")
+                        print("Expiry Date 1")
+                    elif(str(sheet["D"+str(i)].value)==exp and not(str(sheet["B"+str(i)].value)==batch)):
+                        messagebox.showinfo("Add Medicine","Please change the expiry as well")
+                        messagebox.showinfo("Add Medicine","Please check the MRP as well")
+                        T6.delete(1.0, "end-1c")
+                        print("Expiry Date 2")
+                    elif(not(str(sheet["D"+str(i)].value)==exp) and not(str(sheet["B"+str(i)].value)==batch)):
+                        sheet["D"+str(i)]=exp
+                        sheet["B"+str(i)]=batch
+                        f_ok=True
+                        print("Expiry Date 3")
+                    else:
+                        sheet["D"+str(i)]=exp
+                        sheet["B"+str(i)]=batch
+                        f_ok=True
+                    if(f_ok):
+                        sheet["A"+str(i)]=name
+                        sheet["C"+str(i)]=manu
+                        sheet["E"+str(i)]=float(mrp)   
                     workbook.save(filename="res/Inventory.xlsx")
                     break
 
-            workbook = load_workbook(filename=dest_path+date+" Pharmacy.xlsx")
-            sheet = workbook.active
-            f=False
-            for j in range(1, 7):
-                sheet = workbook["Sheet"+str(j)]
-                for i in range(14,39):
-                    s=str(i)
-                    if(sheet["B"+s].value is None):
-                        f=True
-                        sheet["B"+s]=name
-                        sheet["C"+s]=batch
-                        sheet["D"+s]=manu
-                        sheet["E"+s]=exp
-                        sheet["F"+s]=float(med_details[med_id.index(int(id))][5])
-                        sheet["G"+s]=int(qty)
-                        workbook.save(filename=dest_path+date+" Pharmacy.xlsx")
-                        print("add")
+            if(not(f_name)):
+                i=rows+1
+                sheet["A"+str(i)]=name
+                sheet["B"+str(i)]=batch
+                sheet["C"+str(i)]=manu
+                sheet["D"+str(i)]=exp
+                sheet["E"+str(i)]=float(mrp)
+                workbook.save(filename="res/Inventory.xlsx")
+            if(f_ok):
+                workbook = load_workbook(filename=dest_path+date+" Pharmacy.xlsx")
+                sheet = workbook.active
+                f=False
+                for j in range(1, 7):
+                    sheet = workbook["Sheet"+str(j)]
+                    for i in range(14,39):
+                        s=str(i)
+                        if(sheet["B"+s].value is None):
+                            f=True
+                            sheet["B"+s]=name
+                            sheet["C"+s]=batch
+                            sheet["D"+s]=manu
+                            sheet["E"+s]=exp
+                            sheet["F"+s]=float(med_details[med_id.index(int(id))][5])
+                            sheet["G"+s]=int(qty)
+                            workbook.save(filename=dest_path+date+" Pharmacy.xlsx")
+                            print("add")
+                            break
+                    if(f):
                         break
-                if(f):
-                    break
 
-            T1.delete(1.0, END)
-            T2.delete(0, 'end')
-            T3.delete('1.0', END)
-            T4.delete('1.0', END)
-            T5.delete('1.0', END)
-            T6.delete('1.0', END)
-            T7.delete('1.0', END)
+                T1.delete(1.0, END)
+                T2.delete(0, 'end')
+                T3.delete('1.0', END)
+                T4.delete('1.0', END)
+                T5.delete('1.0', END)
+                T6.delete('1.0', END)
+                T7.delete('1.0', END)
 
     #function to get the maximum filles rows
     def get_maximum_rows(*, sheet_object):
