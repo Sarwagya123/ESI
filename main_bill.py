@@ -26,8 +26,9 @@ def main(dest_path):
     
     def med(dest_path, dates):
         sum=0
-        for i in dates:
-            workbook = load_workbook(filename=dest_path+i+" Pharmacy.xlsx", data_only=True)
+        for k in dates:
+            # print(i)
+            workbook = load_workbook(filename=dest_path+k+" Pharmacy.xlsx", data_only=True)
             sheet = workbook.active
             # f=False
             for j in range(1, 7):
@@ -38,7 +39,13 @@ def main(dest_path):
                     #     f=True
                     #     break
                     if(sheet["B"+s].value is not None):
-                        sum+=(float(sheet["F"+s].value)*float(sheet["G"+s].value))
+                        if(sheet["F"+s].value is None):
+                            messagebox.showinfo("Error","Please check Pharmacy Bill Dated - "+k+" See sheet " + str(j)+ " Row "+str(i))
+                        else:
+                            try:
+                                sum+=(float(sheet["F"+s].value)*float(sheet["G"+s].value))
+                            except Exception as error:
+                                messagebox.showinfo("Error", str(error)+" Dated "+k+" See sheet " + str(j)+ " Row "+str(i))
                 # if(f):
                 #     break      
         return sum
