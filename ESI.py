@@ -4,15 +4,23 @@ from tkinter import messagebox
 import new_user
 import admin
         
+
+def show_pass_btn(T2, click_btn):
+    if(click_btn.cget("file")=="res/hide_password_1.png"):
+        T2.configure(show="*")
+        click_btn.configure(file='res/show_password_1.png')
+    else:
+        T2.config(show="")
+        click_btn.config(file='res/hide_password_1.png')
         
 #function called on logging in
 def login(t):
     id = T1.get("1.0", "end-1c")
     id=id.strip()
     T1.delete(1.0, "end-1c")
-    password = T2.get("1.0", "end-1c")
+    password = T2.get()
     password=password.strip()
-    T2.delete(1.0, "end-1c")
+    T2.delete(0, END)
     if(id=="" or password==""):
         messagebox.showinfo("user","Please fill in the id and password")
         return
@@ -55,8 +63,12 @@ T1.place(x=170,y=108)
 lbl3 = Label(window, text="Password", fg='white', bg='blue', font=("Times New Roman", 20))
 lbl3.place(x=30, y=150)
 
-T2 = Text(window, bg='white', fg='black', height=1.4, width=25, padx=1, pady=1)
+T2 = Entry(window, bg='white', show="*", fg='black', width=33)
 T2.place(x=170,y=158)
+
+click_btn= PhotoImage(file='res/show_password_1.png', height=18)
+btn_pass= Button(window, command=lambda t="Show Pass Button Clicked": show_pass_btn(T2, click_btn) , image=click_btn, borderwidth=0)
+btn_pass.place(x=380, y=158)
 
 btn1 = Button(window, text="Log-In", fg='black', command=lambda t="LogIn Button Clicked": login(t))
 btn1['font'] = myFont
