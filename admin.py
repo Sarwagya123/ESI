@@ -7,6 +7,7 @@ from ttkwidgets.autocomplete import *
 from openpyxl import load_workbook
 import add_pat
 import edit_pat
+import see_pat
 import re
 import os
 
@@ -31,7 +32,7 @@ def main(n):
             if(year=="Select Year" or month=="Select Month" or name=="" or indoor==""):
                 messagebox.showinfo("Edit Patient","Please fill up the details")
                 print("No Patient Error")
-                T2.delete('1.0', END)
+                T2.delete(0, END)
                 T5.delete('1.0', END)
 
             l_year=os.listdir(l[0])
@@ -58,58 +59,7 @@ def main(n):
             else:
                 messagebox.showinfo("Edit Patient","No Year Found")
                 print("No Year Error")
-                T2.delete('1.0', END)
-                T5.delete('1.0', END)
-
-
-
-    #see patient details
-    def see(t, T5 , T2, menu1, menu2, window1):
-        name=T2.get("1.0", "end-1c").strip()
-        indoor=T5.get("1.0", "end-1c").strip()
-        f=open(r'res\\extras.txt', 'r')
-        l=f.readlines()
-        if(len(l)==0 or l[0]==""):
-            messagebox.showinfo("See Patient","First Add a Patient")
-            print("See Patient Error")
-            f.close()
-        
-        else:
-            parent_dir=l[0]
-            folder_name=name+"-"+indoor
-            year=menu1.get()
-            month=menu2.get()
-            if(year=="Select Year" or month=="Select Month" or name=="" or indoor==""):
-                messagebox.showinfo("See Patient","Please fill up the details")
-                print("No Patient Error")
-                T2.delete('1.0', END)
-                T5.delete('1.0', END)
-
-            l_year=os.listdir(l[0])
-
-            if(year in l_year):
-                l1=os.listdir(parent_dir+year+"/")
-                if(month in l1):
-                    l2=os.listdir(parent_dir+year+"/"+month+"/")
-                    parent_dir=parent_dir+year+"/"+month+"/"
-                    if(folder_name in l2):
-                        os.startfile(parent_dir+folder_name)
-                        window1.destroy()
-                    else:
-                        messagebox.showinfo("See Patient","No Patient Found")
-                        print("No Month Error")
-                        T2.delete('1.0', END)
-                        T5.delete('1.0', END)
-                else:
-                    messagebox.showinfo("See Patient","No Month Found")
-                    print("No Month Error")
-                    T2.delete('1.0', END)
-                    T5.delete('1.0', END)
-                    
-            else:
-                messagebox.showinfo("See Patient","No Year Found")
-                print("No Year Error")
-                T2.delete('1.0', END)
+                T2.delete(0, END)
                 T5.delete('1.0', END)
 
     #function to get the maximum filles rows
@@ -438,19 +388,19 @@ def main(n):
 
                 #Create a dropdown Menu
                 drop1= OptionMenu(window1, menu1, *l_year)
-                drop1.place(x=30,y=30)
+                drop1.place(x=30,y=20)
 
                 #Set the Menu initially
                 menu2= StringVar(window1)
                 menu2.set("Select Month")
                 #Create a dropdown Menu
                 drop2= OptionMenu(window1, menu2, *["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
-                drop2.place(x=200,y=30)
+                drop2.place(x=200,y=20)
 
                 # See button
                 btn = Button(window1, text="Ok", fg='black', command=lambda t="See Patient Button Clicked": edit_patients_see(t, menu1, menu2, window1))
                 btn['font'] = myFont
-                btn.place(x=160, y=80)
+                btn.place(x=160, y=70)
 
 
                 window1.title('Edit Patient')
@@ -462,65 +412,7 @@ def main(n):
 
     #function to See patient details
     def see_patients(t):
-        f=open(r'res\\extras.txt', 'r')
-        l=f.readlines()
-        if(len(l)==0 or l[0]==""):
-            messagebox.showinfo("See Patient","First Add a Patient")
-            print("See Patient Error")
-            f.close()
-
-
-        else:
-            l_year=os.listdir(l[0])
-            if(len(l_year)==0 or l_year[0]==""):
-                messagebox.showinfo("See Patient","First Add a Patient")
-                print("See Patient Error")
-                f.close()
-            else:
-
-                window1 = Tk()
-
-                lbl = Label(window1, text="Name", fg='white', bg='blue', font=("Times New Roman", 20))
-                lbl.place(x=20, y=30)
-
-                T2 = Text(window1, bg='white', fg='black', height=1.4, width=30, padx=1, pady=1)
-                T2.place(x=95,y=38)
-
-                lbl = Label(window1, text="Indoor Reg. No.", fg='white', bg='blue', font=("Times New Roman", 20))
-                lbl.place(x=20, y=83)
-
-                T5 = Text(window1, bg='white', fg='black', height=1.4, width=15, padx=1, pady=1)
-                T5.place(x=200,y=90)
-
-                # declaring the common font size for all the buttons
-                myFont = font.Font(size=15)
-
-                #Set the Menu initially
-                menu1= StringVar(window1)
-                menu1.set("Select Year")
-
-                #Create a dropdown Menu
-                drop1= OptionMenu(window1, menu1, *l_year)
-                drop1.place(x=30,y=140)
-
-                #Set the Menu initially
-                menu2= StringVar(window1)
-                menu2.set("Select Month")
-                #Create a dropdown Menu
-                drop2= OptionMenu(window1, menu2, *["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
-                drop2.place(x=200,y=140)
-
-                # See button
-                btn = Button(window1, text="See", fg='black', command=lambda t="See Patient Button Clicked": see(t, T5, T2, menu1, menu2, window1))
-                btn['font'] = myFont
-                btn.place(x=150, y=200)
-
-
-                window1.title('See Patient')
-                window1.geometry("350x250")
-                window1.configure(bg='blue')
-                window1.mainloop()
-                print("see patients")
+        see_pat.main()
 
 
     #Admin GUI
