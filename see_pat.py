@@ -5,9 +5,6 @@ from tkinter import messagebox
 from tkinter import filedialog
 from ttkwidgets.autocomplete import *
 from openpyxl import load_workbook
-import add_pat
-import edit_pat
-import re
 import os
 
 def main():
